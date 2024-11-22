@@ -1,6 +1,6 @@
-@PennyWise.Bootstrapper_HostAddress = http://localhost:5029
+@PennyWise.Bootstrapper_HostAddress = http://localhost:5002
 
-GET {{PennyWise.Bootstrapper_HostAddress}}/weatherforecast/
+GET {{PennyWise.Bootstrapper_HostAddress}}/pennyWise/
 Accept: application/json
 
 ###
