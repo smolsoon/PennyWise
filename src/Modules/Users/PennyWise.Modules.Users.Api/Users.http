@@ -1,0 +1,19 @@
+@PennyWise.Bootstrapper_HostAddress = http://localhost:5010
+
+GET {{PennyWise.Bootstrapper_HostAddress}}/pennyWise/
+Accept: application/json
+
+###
+
+GET {{PennyWise.Bootstrapper_HostAddress}}/account
+
+###
+
+@email = pennywise@gmail.com
+@password = pennywisePassword
+@role = admin
+
+POST {{PennyWise.Bootstrapper_HostAddress}}/account/sign-up Content-Type: application/json
+{
+"email": "{{email}}", "password": "{{password}}", "role": "{{role}}"
+}

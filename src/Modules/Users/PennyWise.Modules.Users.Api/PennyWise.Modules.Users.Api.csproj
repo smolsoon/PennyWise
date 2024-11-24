@@ -15,4 +15,8 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PennyWise.Modules.Users.Core\PennyWise.Modules.Users.Core.csproj" />
+  </ItemGroup>
+
 </Project>

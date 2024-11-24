@@ -10,8 +10,8 @@ internal class UserContextFactory : IDesignTimeDbContextFactory<UsersDbContext>
     {
         var optionsBuilder = new DbContextOptionsBuilder<UsersDbContext>();
         
-        var appBasePath = Environment.GetEnvironmentVariable("APP_BASE_PATH");
-        var basePath = Path.Combine(appBasePath, @"Bootstrapper\PennyWise.Bootstrapper");
+        var basePath = Path.Combine(Directory.GetCurrentDirectory(), 
+            @"..\..\..\..\src\Bootstrapper\PennyWise.Bootstrapper");
 
         var configuration = new ConfigurationBuilder()
             .SetBasePath(basePath)
