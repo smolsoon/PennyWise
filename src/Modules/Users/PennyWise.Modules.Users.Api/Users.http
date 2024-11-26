@@ -1,19 +1,56 @@
-@PennyWise.Bootstrapper_HostAddress = http://localhost:5010
+@PennyWise.Bootstrapper_HostAddress = https://localhost:5002
 
-GET {{PennyWise.Bootstrapper_HostAddress}}/pennyWise/
+GET {{PennyWise.Bootstrapper_HostAddress}}/pennyWise
 Accept: application/json
 
 ###
+GET {{PennyWise.Bootstrapper_HostAddress}}/home
 
+###
 GET {{PennyWise.Bootstrapper_HostAddress}}/account
 
 ###
-
 @email = pennywise@gmail.com
 @password = pennywisePassword
 @role = admin
 
 POST {{PennyWise.Bootstrapper_HostAddress}}/account/sign-up Content-Type: application/json
+Content-Type: application/json
+{
+"email":"pennywise@gmail.com", 
+"password": "password2"
+}
+
+###
+
+POST {{PennyWise.Bootstrapper_HostAddress}}/account/sign-up Content-Type: application/json
 {
 "email": "{{email}}", "password": "{{password}}", "role": "{{role}}"
 }
+
+###
+POST {{PennyWise.Bootstrapper_HostAddress}}/account/sign-up
+Content-Type: application/json
+
+{
+"email": "pennywise@gmail.com",
+"password": "password2"
+}
+
+###
+POST https://localhost:5002/account/sign-up
+Content-Type: application/json
+
+{
+  "name" : "Kamil",
+  "lastname" : "Smolik",
+  "email": "pennywisess@gmail.com",
+  "password": "password2",
+  "role": "admin"
+}
+
+###
+GET https://localhost:5002/api/home
+
+###
+GET https://localhost:5002/account/users

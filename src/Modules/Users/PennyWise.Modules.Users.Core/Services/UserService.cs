@@ -8,13 +8,18 @@ namespace PennyWise.Modules.Users.Core.Services;
 
 internal class UserService(IUserRepository userRepository) : IUserService
 {
-    private readonly IUserRepository _userRepository = userRepository;
-
     public async Task<UserDto?> GetAsync(Guid id)
     {
-        var user = await _userRepository.GetAsync(id);
+        var user = await userRepository.GetAsync(id);
         
         return user is null ? null : new UserDto(user.Id, user.Email, user.Role, user.CreatedAt);
+    }
+
+    public async Task<IEnumerable<UserDto>> BrowseAsync()
+    {
+        var users = await userRepository.BrowseAsync();
+
+        return users.Select(user => new UserDto(user.Id, user.Email, user.Role, user.CreatedAt)).ToList();
     }
 
     public Task<JsonWebToken> SignInAsync(SignInDto signInDto)
@@ -26,15 +31,17 @@ internal class UserService(IUserRepository userRepository) : IUserService
     {
         signUpDto.Id = Guid.NewGuid();
         var email = signUpDto.Email.ToLowerInvariant();
-        var user = await _userRepository.GetAsync(email);
-
+        var user = await userRepository.GetAsync(email);
+        
         if (user is not null)
         {
             throw new EmailInUseException();
         }
-
+        
         user = new User(signUpDto.Name, signUpDto.Lastname, signUpDto.Email, signUpDto.Password, signUpDto.Role);
         
-        await _userRepository.AddAsync(user);
+        await userRepository.AddAsync(user);
     }
+    
+    
 }

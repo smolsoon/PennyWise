@@ -1,6 +1,7 @@
 @PennyWise.Bootstrapper_HostAddress = http://localhost:5002
 
-GET {{PennyWise.Bootstrapper_HostAddress}}/pennyWise/
+GET {{PennyWise.Bootstrapper_HostAddress}}/pennyWise
 Accept: application/json
+
 
 ###

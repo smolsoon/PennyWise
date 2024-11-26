@@ -14,21 +14,24 @@ internal class UserRepository(UsersDbContext context) : IUserRepository
     public Task<User?> GetAsync(string email) =>
         _users.SingleOrDefaultAsync(x => x.Email == email);
 
-    public Task<IEnumerable<User>> BrowseAsync()
+    public async Task<IEnumerable<User>> BrowseAsync()
     {
-        throw new NotImplementedException();
+        return await Task.FromResult(_users.ToList());
     }
 
-    public async Task AddAsync(User user)
+    public async Task<Task> AddAsync(User user)
     {
         await _users.AddAsync(user);
+        
         await context.SaveChangesAsync();
+        
+        return Task.CompletedTask;
     }
 
     public async Task UpdateAsync(User user)
     {
-        _users.Update(user);
-        await context.SaveChangesAsync();
+        //_users.Update(user);
+        //await context.SaveChangesAsync();
     }
 
     public Task RemoveAsync(Guid id)

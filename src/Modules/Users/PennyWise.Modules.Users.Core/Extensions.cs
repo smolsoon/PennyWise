@@ -1,13 +1,24 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿
+using System.Runtime.CompilerServices;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using PennyWise.Modules.Users.Core.DAL;
 using PennyWise.Modules.Users.Core.DAL.Repositories;
 using PennyWise.Modules.Users.Core.Repositories;
+using PennyWise.Modules.Users.Core.Services;
+using PennyWise.Shared.Infrastructure.Postgres;
 
+[assembly: InternalsVisibleTo("PennyWise.Modules.Users.Api")]
 namespace PennyWise.Modules.Users.Core;
 
 internal static class Extensions
 {
-    public static IServiceCollection AddCore(this IServiceCollection services)
+    internal static IServiceCollection AddCore(this IServiceCollection services, IConfiguration configuration)
     {
-        return services.AddScoped<IUserRepository, UserRepository>();
+       services.AddTransient<IUserRepository, UserRepository>();
+       services.AddTransient<IUserService, UserService>();
+       services.AddPostgres<UsersDbContext>(configuration);
+        
+       return services;
     }
 }

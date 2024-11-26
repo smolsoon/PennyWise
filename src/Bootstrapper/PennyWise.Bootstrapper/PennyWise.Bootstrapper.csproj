@@ -9,11 +9,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+   
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Modules\Users\PennyWise.Modules.Users.Core\PennyWise.Modules.Users.Core.csproj" />
+    <ProjectReference Include="..\..\Modules\Users\PennyWise.Modules.Users.Api\PennyWise.Modules.Users.Api.csproj" />
     <ProjectReference Include="..\..\Shared\PennyWise.Shared.Infrastructure\PennyWise.Shared.Infrastructure.csproj" />
   </ItemGroup>
 

@@ -13,7 +13,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
   </ItemGroup>
@@ -26,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\PennyWise.Shared.Abstractions\PennyWise.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Shared\PennyWise.Shared.Infrastructure\PennyWise.Shared.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

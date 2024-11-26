@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore;
 using PennyWise.Modules.Users.Core.Entities;
 
+[assembly: InternalsVisibleTo("PennyWise.Bootstrapper")]
 namespace PennyWise.Modules.Users.Core.DAL;
 
 internal class UsersDbContext : DbContext
